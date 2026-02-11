@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Willard the Barking Spider – Official Book Site</title>
+    <!--
+      This standalone HTML file can be used as a landing page on a WordPress site.
+      It was created to be easy to copy‑paste into the WordPress page editor (in
+      "Code"/"HTML" view) or uploaded to a static hosting service. The design
+      emphasises a clean, modern feel with interactive elements to engage young
+      readers and their parents. Images live in the same folder as this file –
+      ensure you upload them to your WordPress media library and update the
+      src paths accordingly (e.g. by using the media library's URLs).
+    -->
+    <meta name="description" content="Welcome to the official site of Willard the Barking Spider, a heartwarming children's book about discovery, friendship and finding your voice." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+        /* Reset and base styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f8f8;
+        }
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Header / navigation */
+        header {
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        nav a {
+            font-weight: 600;
+            color: #333;
+        }
+        nav a:hover {
+            color: #0077cc;
+        }
+        /* Hero section */
+        #hero {
+            background: url('book-cover.png') center/cover no-repeat;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: #fff;
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            padding: 2rem;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            background-color: #ff6f61;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: #e65750;
+        }
+        /* Section styles */
+        section {
+            padding: 4rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2.section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #333;
+        }
+        /* Summary */
+        #summary p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        /* Gallery slider */
+        #gallery {
+            position: relative;
+        }
+        .slider {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            height: 400px;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255,255,255,0.7);
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            line-height: 1;
+            z-index: 10;
+        }
+        .slider-button:hover {
+            background-color: rgba(255,255,255,0.9);
+        }
+        .slider-prev {
+            left: 1rem;
+        }
+        .slider-next {
+            right: 1rem;
+        }
+        /* Characters section */
+        #characters .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .card {
+            perspective: 1000px;
+            width: 260px;
+            height: 340px;
+            position: relative;
+        }
+        .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card-front {
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .card-front img {
+            width: 80%;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        .card-front h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .card-front p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .card-back {
+            background-color: #ffecd1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: rotateY(180deg);
+            border-radius: 10px;
+        }
+        .card-back h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .card-back p {
+            font-size: 0.9rem;
+            color: #444;
+            text-align: center;
+        }
+        /* Quiz section */
+        #quiz {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #quiz h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 1.5rem;
+        }
+        .question p {
+            margin-bottom: 0.5rem;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        .question input {
+            margin-right: 0.5rem;
+        }
+        .quiz-result {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        /* Purchase section */
+        #purchase {
+            text-align: center;
+            background-color: #fff7e6;
+            border-radius: 8px;
+            padding: 3rem 1rem;
+        }
+        #purchase p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        footer a {
+            color: #ff6f61;
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            .cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            .slider {
+                height: 300px;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo"><strong>Willard the Barking Spider</strong></div>
+            <nav>
+                <ul>
+                    <li><a href="#summary">Story</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#characters">Characters</a></li>
+                    <li><a href="#quiz-section">Quiz</a></li>
+                    <li><a href="#purchase">Buy</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Discover Willard's Big Adventure</h1>
+            <p>Join a brave little spider as he steps outside the barn, learns to bark and makes friends in a world full of wonder.</p>
+            <a class="btn-primary" href="#purchase">Buy the Book</a>
+        </div>
+    </section>
+    <!-- Summary -->
+    <section id="summary">
+        <h2 class="section-title">About the Book</h2>
+        <div class="container">
+            <p><em>Willard the Barking Spider</em> is a charming children's story about courage, curiosity and friendship. Willard has lived his whole life in a barn, spinning webs and watching the world from afar. One day, he gathers his courage, climbs to the top of a hill and discovers a vibrant park full of laughing children and playful dogs.</p>
+            <p>Determined to make friends, Willard watches a gentle dog named Butch and three children, Logan, Maurizio and Amy. He admires how they play fetch, wag tails and bark with joy. Hoping to fit in, he finds a baseball cap, a pair of sneakers and a shiny bottle cap left behind by the kids. Using his bottle cap as a mirror, he practises barking until, to his delight, a real bark emerges!</p>
+            <p>With newfound confidence, Willard approaches the children and Butch. They smile at his bravery, share their toys and welcome him into their games. The story shows young readers that being different is something to celebrate – and that friendship is built by sharing who you truly are. Colourful illustrations and gentle humour make this book a fun read for children and adults alike.</p>
+        </div>
+    </section>
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2 class="section-title">Peek Inside the Pages</h2>
+        <div class="container">
+            <div class="slider" id="slider">
+                <div class="slides" id="slides">
+                    <div class="slide"><img src="page8.png" alt="Willard views the park scene" /></div>
+                    <div class="slide"><img src="page1.png" alt="Willard plays fetch with Butch" /></div>
+                    <div class="slide"><img src="page2.png" alt="Willard meets the children" /></div>
+                    <div class="slide"><img src="page3.png" alt="Children and Willard talk" /></div>
+                    <div class="slide"><img src="page4.png" alt="Willard finds a cap and sneakers" /></div>
+                    <div class="slide"><img src="page5.png" alt="Willard practices barking" /></div>
+                    <div class="slide"><img src="page6.png" alt="Willard's first bark" /></div>
+                    <div class="slide"><img src="page7.png" alt="Everyone plays together" /></div>
+                </div>
+                <button class="slider-button slider-prev" aria-label="Previous" id="prevBtn">&#8592;</button>
+                <button class="slider-button slider-next" aria-label="Next" id="nextBtn">&#8594;</button>
+            </div>
+        </div>
+    </section>
+    <!-- Characters -->
+    <section id="characters">
+        <h2 class="section-title">Meet the Characters</h2>
+        <div class="container">
+            <div class="cards">
+                <!-- Willard card -->
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="book-cover.png" alt="Willard the Barking Spider" />
+                            <h3>Willard</h3>
+                            <p>The adventurous spider with a big heart.</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>About Willard</h4>
+                            <p>Curious about the world, Willard leaves his barn to explore the park. He learns to bark so he can communicate with his new friends and discovers that being himself is the best way to fit in.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Butch card -->
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="page1.png" alt="Butch the dog" />
+                            <h3>Butch</h3>
+                            <p>A gentle dog who loves to fetch and nap.</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>About Butch</h4>
+                            <p>Butch is the playful dog Willard meets in the park. He shows Willard how to have fun, relax and enjoy the simple pleasures of life. He quickly becomes Willard's loyal friend.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Children card -->
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="page3.png" alt="Logan, Maurizio and Amy" />
+                            <h3>Logan, Maurizio &amp; Amy</h3>
+                            <p>Three imaginative children from the park.</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>About the Children</h4>
+                            <p>These siblings welcome Willard into their games. Their kindness shows that new friends come in all shapes and sizes. They teach Willard about sharing and caring.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Your family card -->
+                <div class="card" onclick="flipCard(this)">
+                    <div class="card-inner">
+                        <div class="card-face card-front">
+                            <img src="page4.png" alt="Audience or reader" />
+                            <h3>You!</h3>
+                            <p>Become part of Willard's story.</p>
+                        </div>
+                        <div class="card-face card-back">
+                            <h4>Join the Adventure</h4>
+                            <p>Readers are encouraged to dream big and make friends, just like Willard. Imagine yourself joining Willard, Butch and the children on their adventures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Quiz -->
+    <section id="quiz-section">
+        <h2 class="section-title">Test Your Knowledge</h2>
+        <div id="quiz">
+            <h3>How well do you know Willard's story?</h3>
+            <form id="quizForm" onsubmit="return evaluateQuiz()">
+                <div class="question">
+                    <p>1. What items does Willard find in the park?</p>
+                    <label><input type="radio" name="q1" value="correct" />A baseball cap, sneakers and a bottle cap</label>
+                    <label><input type="radio" name="q1" value="wrong" />A skateboard, sunglasses and a coin</label>
+                    <label><input type="radio" name="q1" value="wrong" />A backpack, hat and book</label>
+                </div>
+                <div class="question">
+                    <p>2. How does Willard learn to communicate with his new friends?</p>
+                    <label><input type="radio" name="q2" value="wrong" />He learns to whistle</label>
+                    <label><input type="radio" name="q2" value="correct" />He practises barking until a real bark comes out</label>
+                    <label><input type="radio" name="q2" value="wrong" />He writes notes in his web</label>
+                </div>
+                <button type="submit" class="btn-primary">Check Answers</button>
+                <p class="quiz-result" id="quizResult"></p>
+            </form>
+        </div>
+    </section>
+    <!-- Purchase -->
+    <section id="purchase">
+        <h2 class="section-title">Bring Willard Home</h2>
+        <p>Ready to share Willard's story with your family or classroom? Order the book today and inspire young readers to be brave and kind.</p>
+        <a class="btn-primary" href="https://www.amazon.com/dp/B0XYZ..." target="_blank" rel="noopener noreferrer">Buy on Amazon</a>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; <span id="year"></span> Willard the Barking Spider. All rights reserved.</p>
+        <p>Website created with ❤️ using a free WordPress template. Have questions? <a href="mailto:info@willardthebarkingspider.com">Contact us</a>.</p>
+    </footer>
+    <!-- JavaScript for interactivity -->
+    <script>
+        // Dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // Slider functionality
+        const slides = document.getElementById('slides');
+        const slideCount = slides.children.length;
+        let index = 0;
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            index = (index - 1 + slideCount) % slideCount;
+            updateSlider();
+        });
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            index = (index + 1) % slideCount;
+            updateSlider();
+        });
+        function updateSlider() {
+            slides.style.transform = `translateX(-${index * 100}%)`;
+        }
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            index = (index + 1) % slideCount;
+            updateSlider();
+        }, 5000);
+        // Flip card function
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+        // Quiz evaluation
+        function evaluateQuiz() {
+            const form = document.getElementById('quizForm');
+            const result = document.getElementById('quizResult');
+            let score = 0;
+            if (form.q1.value === 'correct') score++;
+            if (form.q2.value === 'correct') score++;
+            result.textContent = `You got ${score} out of 2 correct!`;
+            // Prevent form submission
+            return false;
+        }
+    </script>
+</body>
+</html>

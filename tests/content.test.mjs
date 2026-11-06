@@ -43,6 +43,19 @@ test("book two is separate, coming soon, and has no purchase link", () => {
   assert.match(html, /book-two-preview\.mp4/);
 });
 
+test("calm motion sits with the path game, not in the header", () => {
+  for (const page of pages) {
+    const html = read(page);
+    const header = html.slice(html.indexOf("<header"), html.indexOf("</header>"));
+    assert.equal(header.includes("data-calm"), false, page);
+    assert.equal(header.includes("Calm motion"), false, page);
+  }
+  const games = read("games.html");
+  const runner = games.slice(games.indexOf("data-runner"), games.indexOf("data-crossword"));
+  assert.match(runner, /data-calm/);
+  assert.match(runner, /Calm motion/);
+});
+
 test("games page has both games and no store", () => {
   const html = read("games.html");
   assert.match(html, /data-runner/);
@@ -75,6 +88,37 @@ test("no unexpected third-party hosts", () => {
   }
   const css = read("css/site.css");
   assert.equal(css.includes("http"), false);
+});
+
+test("theme art is the supplied Willard and scenery", () => {
+  const pages = ["index.html", "book-one.html", "book-two.html", "games.html", "author.html", "404.html"];
+  for (const page of pages) {
+    const html = read(page);
+    assert.match(html, /assets\/theme\/willard-mark\.webp/);
+    assert.match(html, /assets\/theme\/willard-32\.png/);
+    assert.equal(html.includes("<svg"), false, page);
+  }
+  const css = read("css/site.css");
+  const runner = read("js/runner.js");
+  assert.match(css, /assets\/theme\/park-bg\.webp/);
+  assert.match(css, /opacity:\s*0\.2/);
+  for (const file of ["assets/game/willard.webp", "assets/game/sky.webp", "assets/game/log.webp", "assets/game/puddle.webp"]) {
+    assert.match(runner, new RegExp(file.replaceAll("/", "\\/")));
+  }
+  for (const file of [
+    "assets/theme/park-bg.webp",
+    "assets/theme/willard-mark.webp",
+    "assets/theme/willard-32.png",
+    "assets/game/willard.webp",
+    "assets/game/sky.webp",
+    "assets/game/log.webp",
+    "assets/game/puddle.webp",
+  ]) {
+    assert.equal(existsSync(join(root, file)), true, file);
+  }
+  assert.equal(runner.includes("ellipse"), false);
+  assert.match(read("book-two.html"), /Coming soon/);
+  assert.equal(read("book-two.html").includes("amazon.com"), false);
 });
 
 test("public book-two originals and site art are present", () => {

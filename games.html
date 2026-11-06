@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Play with Willard</title>
   <meta name="description" content="Two games about Book One: hop across the park with Willard, and solve a spider crossword. Nothing you type is sent anywhere.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/theme/willard-32.png" type="image/png">
   <link rel="stylesheet" href="css/site.css">
 </head>
 <body>
@@ -13,13 +13,12 @@
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="index.html">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#fff6e8"/><ellipse cx="32" cy="38" rx="14" ry="12" fill="#c4844a"/><path d="M18 28h28c2 7-3 12-14 12S16 35 18 28z" fill="#9d2b1e"/><circle cx="24" cy="24" r="3" fill="#f0b429"/><circle cx="26" cy="37" r="2.2" fill="#2c2118"/><circle cx="38" cy="37" r="2.2" fill="#2c2118"/><path d="M27 43c3 2.4 8 2.4 11 0" fill="none" stroke="#2c2118" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <img class="brand-mark" src="assets/theme/willard-mark.webp" width="128" height="128" alt="">
         <span>Willard the Barking Spider</span>
       </a>
       <div class="header-tools">
         <input class="nav-check" id="nav-check" type="checkbox">
         <label class="nav-toggle" for="nav-check">Menu</label>
-        <button class="calm-toggle" type="button" data-calm aria-pressed="false">Calm motion</button>
         <nav class="site-nav" id="site-nav" aria-label="Primary">
           <ul>
             <li><a href="index.html">Home</a></li>
@@ -42,7 +41,7 @@
           <img src="assets/site/games-path.webp" width="1152" height="864" alt="Website illustration of Willard in a red star cap and blue sneakers on a winding park path, with spider webs in the trees. Not a book cover.">
           <figcaption>A picture drawn for the games page. It is not a cover from either book.</figcaption>
         </figure>
-        <p class="help">No names, no accounts, and no scores leave this page. Calm motion slows the path and turns off extra movement. It follows your system setting until you change it here.</p>
+        <p class="help">No names, no accounts, and no scores leave this page.</p>
       </div>
     </section>
 
@@ -61,8 +60,9 @@
           <button class="btn btn-secondary" type="button" data-pause>Pause</button>
           <button class="btn btn-secondary" type="button" data-restart>Restart</button>
           <button class="btn btn-primary" type="button" data-hop>Hop</button>
+          <button class="calm-toggle" type="button" data-calm aria-pressed="false">Calm motion</button>
         </div>
-        <p class="help">Keyboard: click the game, then Space or Arrow Up hops. Touch: tap the picture or the Hop button. Holding Hop makes a gentle bounce.</p>
+        <p class="help">Calm motion slows this path and turns off the extra bounce. It follows your system setting until you change it here, and that choice stays in this browser tab. Keyboard: click the game, then Space or Arrow Up hops. Touch: tap the picture or the Hop button.</p>
       </div>
     </section>
 

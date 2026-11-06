@@ -43,6 +43,19 @@ test("book two is separate, coming soon, and has no purchase link", () => {
   assert.match(html, /book-two-preview\.mp4/);
 });
 
+test("calm motion sits with the path game, not in the header", () => {
+  for (const page of pages) {
+    const html = read(page);
+    const header = html.slice(html.indexOf("<header"), html.indexOf("</header>"));
+    assert.equal(header.includes("data-calm"), false, page);
+    assert.equal(header.includes("Calm motion"), false, page);
+  }
+  const games = read("games.html");
+  const runner = games.slice(games.indexOf("data-runner"), games.indexOf("data-crossword"));
+  assert.match(runner, /data-calm/);
+  assert.match(runner, /Calm motion/);
+});
+
 test("games page has both games and no store", () => {
   const html = read("games.html");
   assert.match(html, /data-runner/);

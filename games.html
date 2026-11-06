@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play with Willard</title>
+  <meta name="description" content="Two games about Book One: hop across the park with Willard, and solve a spider crossword. Nothing you type is sent anywhere.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#fff6e8"/><ellipse cx="32" cy="38" rx="14" ry="12" fill="#c4844a"/><path d="M18 28h28c2 7-3 12-14 12S16 35 18 28z" fill="#9d2b1e"/><circle cx="24" cy="24" r="3" fill="#f0b429"/><circle cx="26" cy="37" r="2.2" fill="#2c2118"/><circle cx="38" cy="37" r="2.2" fill="#2c2118"/><path d="M27 43c3 2.4 8 2.4 11 0" fill="none" stroke="#2c2118" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <span>Willard the Barking Spider</span>
+      </a>
+      <div class="header-tools">
+        <input class="nav-check" id="nav-check" type="checkbox">
+        <label class="nav-toggle" for="nav-check">Menu</label>
+        <button class="calm-toggle" type="button" data-calm aria-pressed="false">Calm motion</button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="book-one.html">Book One</a></li>
+            <li><a href="book-two.html">Book Two</a></li>
+            <li><a href="games.html" aria-current="page">Games</a></li>
+            <li><a href="author.html">Author</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <p class="badge">Games on this website</p>
+        <h1>Play with Willard</h1>
+        <p class="lede">Both games use Book One: the barn, the bark, the park, and the friends Willard meets there. Book Two, the festival, has its own page and is not mixed into these puzzles.</p>
+        <figure class="game-banner">
+          <img src="assets/site/games-path.webp" width="1152" height="864" alt="Website illustration of Willard in a red star cap and blue sneakers on a winding park path, with spider webs in the trees. Not a book cover.">
+          <figcaption>A picture drawn for the games page. It is not a cover from either book.</figcaption>
+        </figure>
+        <p class="help">No names, no accounts, and no scores leave this page. Calm motion slows the path and turns off extra movement. It follows your system setting until you change it here.</p>
+      </div>
+    </section>
+
+    <section class="section" id="path" aria-labelledby="path-title">
+      <div class="wrap game-card" data-runner tabindex="0">
+        <h2 id="path-title">Across the park</h2>
+        <p id="path-help" class="help">Willard runs a park path. Hop the logs and puddles. A miss sets him just before the obstacle so he can try that hop again. There is no game over.</p>
+        <div class="game-stage">
+          <canvas width="960" height="420" aria-hidden="true"></canvas>
+          <p class="game-overlay" data-overlay>Press Start, then hop.</p>
+        </div>
+        <p data-status aria-live="polite">Press Start, then hop over the logs and puddles.</p>
+        <label>Path progress <progress max="100" value="0">0 percent</progress></label>
+        <div class="game-controls">
+          <button class="btn btn-primary" type="button" data-start>Start</button>
+          <button class="btn btn-secondary" type="button" data-pause>Pause</button>
+          <button class="btn btn-secondary" type="button" data-restart>Restart</button>
+          <button class="btn btn-primary" type="button" data-hop>Hop</button>
+        </div>
+        <p class="help">Keyboard: click the game, then Space or Arrow Up hops. Touch: tap the picture or the Hop button. Holding Hop makes a gentle bounce.</p>
+      </div>
+    </section>
+
+    <section class="section" id="crossword" aria-labelledby="cross-title">
+      <div class="wrap game-card" data-crossword>
+        <h2 id="cross-title">Willard’s word web</h2>
+        <p class="help">A real crossword. Letters that cross have to be the same letter. Clues come from Book One, including Logan, Maurizio, and Amy in the words around the grid.</p>
+        <div class="xw-layout">
+          <div class="xw-scroll">
+            <div class="xw-grid" data-grid role="grid" aria-label="Book One crossword"></div>
+          </div>
+          <div>
+            <div data-clues></div>
+            <div class="xw-actions">
+              <button class="btn btn-secondary" type="button" data-hint>Hint</button>
+              <button class="btn btn-secondary" type="button" data-check>Check</button>
+              <button class="btn btn-secondary" type="button" data-reset>Reset</button>
+              <button class="btn btn-secondary" type="button" data-bank-toggle aria-expanded="false" aria-controls="word-bank">Word bank</button>
+            </div>
+            <p id="word-bank" class="word-bank" data-bank hidden></p>
+            <div class="keys" data-keys aria-label="Letters"></div>
+            <p data-status aria-live="polite">Tap a square, then type a letter.</p>
+          </div>
+        </div>
+        <p class="help">On a phone, slide the grid sideways if a square peeks off the edge. Arrow keys move. Backspace clears a letter.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Stories and pictures by Mario J. Pirrello.</p>
+      <p>Questions? <a href="mailto:info@willardthebarkingspider.com">info@willardthebarkingspider.com</a></p>
+      <p>© <span id="year">2026</span> Willard the Barking Spider.</p>
+      <p class="fine">Calm motion is remembered only in this browser tab. It is not sent to us.</p>
+    </div>
+  </footer>
+  <script type="module" src="js/site.js"></script>
+  <script type="module" src="js/runner.js"></script>
+  <script type="module" src="js/crossword.js"></script>
+</body>
+</html>
